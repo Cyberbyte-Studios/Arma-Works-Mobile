@@ -298,11 +298,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         return true;
     }
 
-    private boolean isEmailValid(String email) {
+    public static boolean isEmailValid(String email) {
         return email.contains("@") && email.contains(".");
     }
 
-    private boolean isPasswordValid(String password) {
+    public static boolean isPasswordValid(String password) {
         return password.length() >= 6;
     }
 
