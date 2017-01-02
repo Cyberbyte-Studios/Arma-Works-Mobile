@@ -1,0 +1,51 @@
+{
+  "project_info": {
+    "project_number": "186694354103",
+    "firebase_url": "https://arma-works.firebaseio.com",
+    "project_id": "arma-works",
+    "storage_bucket": "arma-works.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:186694354103:android:b0868954d59dce98",
+        "android_client_info": {
+          "package_name": "org.uk.cyberbyte.armaworks"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "186694354103-mfgpm9qf39v6p7qp2rqlvr84lb4ltfq9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "org.uk.cyberbyte.armaworks",
+            "certificate_hash": "CB7B135E19614C2F106514AECD534FDC21F36B76"
+          }
+        },
+        {
+          "client_id": "186694354103-gfe5quomqu7rsve0s27715hv8csoj4de.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "186694354103-gfe5quomqu7rsve0s27715hv8csoj4de.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
