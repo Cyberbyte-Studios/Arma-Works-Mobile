@@ -3,8 +3,9 @@ dependencies:
     - sudo pip install -U crcmod
     - echo y | android update sdk --no-ui --all --filter android-25,build-tools-25.0.2,extra-android-m2repository,tools,extra-google-m2repository,platform-tools
   post:
-    - ./gradlew :app:assembleDebug -PdisablePreDex
-    - ./gradlew :app:assembleDebugTest -PdisablePreDex
+    - ./gradlew :app:assembleDebugAndroidTest -PdisablePreDex
+    - ./gradlew :app:assembleDebugUnitTest -PdisablePreDex
+    - ./gradlew :app:assembleReleaseUnitTest -PdisablePreDex
     - echo $GCLOUD_SERVICE_KEY | base64 --decode > ${HOME}/client-secret.json
     - sudo /opt/google-cloud-sdk/bin/gcloud config set project arma-works
     - sudo /opt/google-cloud-sdk/bin/gcloud --quiet components update
@@ -16,6 +17,8 @@ dependencies:
 
 test:
   override:
+    - ./gradlew :app:testDebugUnitTest -PdisablePreDex
+    - ./gradlew :app:testReleaseUnitTest -PdisablePreDex
     - echo "y" | sudo /opt/google-cloud-sdk/bin/gcloud beta test android run --app app/build/outputs/apk/app-debug.apk --test app/build/outputs/apk/app-debug-test-unaligned.apk --results-bucket cloud-test-circle-ci
   post:
     - sudo /opt/google-cloud-sdk/bin/gsutil -m cp -r -U `sudo /opt/google-cloud-sdk/bin/gsutil ls gs://cloud-test-circle-ctl-test | tail -1` $CIRCLE_ARTIFACTS/ | true
