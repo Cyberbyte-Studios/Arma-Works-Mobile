@@ -11,6 +11,9 @@
 
     <!-- Strings for adding Server-->
     <string name="prompt_server_url">Server url</string>
+    <string name="error_url_invalid">This url is invalid</string>
+    <string name="error_url_not_found">This url could not be found</string>
+    <string name="error_url_connect">Could not connect to url</string>
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>

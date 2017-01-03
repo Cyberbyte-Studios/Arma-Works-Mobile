@@ -1,6 +1,8 @@
 package org.uk.cyberbyte.armaworks;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.annotation.StringRes;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.view.View;
@@ -12,8 +14,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity
+import com.firebase.ui.auth.AuthUI;
+import com.firebase.ui.auth.ui.ResultCodes;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
+import org.uk.cyberbyte.armaworks.Api.Server;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
@@ -40,6 +53,17 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        showServerInfo();
+    }
+
+    private void showServerInfo() {
+        SharedPreferences settings = getSettings();
+
+        TextView serverName = (TextView) findViewById(R.id.serverName);
+        serverName.setText(settings.getString(Server.SETTING_NAME, "FUCK"));
+
+        TextView serverUrl = (TextView) findViewById(R.id.serverUrl);
+        serverUrl.setText(settings.getString(Server.SETTING_URL, "FUCK"));
     }
 
     @Override
