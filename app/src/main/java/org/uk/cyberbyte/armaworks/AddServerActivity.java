@@ -86,7 +86,7 @@ public class AddServerActivity extends AppCompatActivity {
             requestFocus = mUrlView;
         }
 
-        if (server.getUrl().isEmpty()) {
+        if (server.getPassword().isEmpty()) {
             mPasswordView.setError(getString(R.string.error_invalid_password));
             requestFocus = mPasswordView;
         }

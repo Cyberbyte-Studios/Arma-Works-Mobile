@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<defaultsMap>
+    <entry>
+        <key>sign_in</key>
+        <value>true</value>
+    </entry>
+    <entry>
+        <key>registration</key>
+        <value>false</value>
+    </entry>
+    <entry>
+        <key>show_support</key>
+        <value>true</value>
+    </entry>
+    <entry>
+        <key>support_url</key>
+        <value>https://cyberbyte.zendesk.com/</value>
+    </entry>
+    <entry>
+        <key>tos_url</key>
+        <value>https://cyberbyte.org.uk/</value>
+    </entry>
+</defaultsMap>

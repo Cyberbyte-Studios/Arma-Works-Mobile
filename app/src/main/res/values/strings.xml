@@ -6,29 +6,29 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
+    <string name="menu_get_support">Get Support</string>
+    <string name="menu_logout">Log out</string>
+
     <string name="action_settings">Settings</string>
     <string name="title_activity_login">Sign in</string>
 
     <!-- Strings for adding Server-->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
     <string name="prompt_server_url">Server url</string>
     <string name="error_url_invalid">This url is invalid</string>
     <string name="error_url_not_found">This url could not be found</string>
     <string name="error_url_connect">Could not connect to url</string>
 
     <!-- Strings related to login -->
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password</string>
-    <string name="action_sign_in">Sign in</string>
-    <string name="action_register">Register</string>
     <string name="error_invalid_email">This email address is invalid</string>
-    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_invalid_password">This password is invalid</string>
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_invalid_credentials">The credentials are invalid</string>
+    <string name="error_no_internet">The credentials are invalid</string>
     <string name="error_field_required">This field is required</string>
-    <string name="error_weak_password">This password is too weak</string>
-    <string name="error_user_exists">A user already exists</string>
-    <string name="permission_rationale">"Contacts permissions are needed for providing email
-        completions."
-    </string>
+
+    <string name="error_sign_in_cancelled">The Sign in was cancelled</string>
+
     <string name="action_add_server">Add Server</string>
 </resources>
