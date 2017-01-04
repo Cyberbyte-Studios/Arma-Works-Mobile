@@ -8,6 +8,9 @@ import android.support.annotation.NonNull;
 import android.support.customtabs.CustomTabsIntent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -24,11 +27,15 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
 
-import org.uk.cyberbyte.armaworks.Api.Server;
-import org.uk.cyberbyte.armaworks.Util.RemoteConfig;
+import org.uk.cyberbyte.armaworks.Api.Models.ArmaLife.Player;
+import org.uk.cyberbyte.armaworks.Config.SharedConfig;
+import org.uk.cyberbyte.armaworks.Fragments.ArmaLife.PlayerFragment;
+import org.uk.cyberbyte.armaworks.Config.RemoteConfig;
 
 public class MainActivity extends BaseActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, PlayerFragment.OnListFragmentInteractionListener {
+
+    private static final String TAG = "LoginActivity";
 
     FirebaseRemoteConfig mFirebaseRemoteConfig;
 
@@ -66,10 +73,10 @@ public class MainActivity extends BaseActivity
         View header = navigationView.getHeaderView(0);
 
         TextView serverName = (TextView) header.findViewById(R.id.serverName);
-        serverName.setText(settings.getString(Server.SETTING_NAME, "FUCK"));
+        serverName.setText(settings.getString(SharedConfig.SERVER_NAME, getString(R.string.error_short)));
 
         TextView serverUrl = (TextView) header.findViewById(R.id.serverUrl);
-        serverUrl.setText(settings.getString(Server.SETTING_URL, "FUCK"));
+        serverUrl.setText(settings.getString(SharedConfig.SERVER_URL, getString(R.string.error_short)));
 
         if (mFirebaseRemoteConfig.getBoolean(RemoteConfig.SHOW_SUPPORT)) {
             Menu menu = navigationView.getMenu();
@@ -127,20 +134,25 @@ public class MainActivity extends BaseActivity
         return super.onOptionsItemSelected(item);
     }
 
+    private void switchFragment(Fragment newFragment) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.content_main, newFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
+
+    public void onListFragmentInteraction(Player player) {
+        Log.d(TAG, "ERRR");
+    }
+
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
+        if (id == R.id.nav_players) {
+            switchFragment(new PlayerFragment());
         } else if (id == R.id.nav_logout) {
             logout();
         } else if (id == R.id.nav_support) {

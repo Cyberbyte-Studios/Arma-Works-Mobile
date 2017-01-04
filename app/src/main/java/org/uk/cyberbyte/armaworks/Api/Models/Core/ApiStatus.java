@@ -1,8 +1,9 @@
-package org.uk.cyberbyte.armaworks.Api.Core;
+package org.uk.cyberbyte.armaworks.Api.Models.Core;
 
 public class ApiStatus {
     private int version;
     private String status;
+    private String name;
     private String developer;
 
     public int getVersion() {
@@ -27,5 +28,13 @@ public class ApiStatus {
 
     public void setDeveloper(String developer) {
         this.developer = developer;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

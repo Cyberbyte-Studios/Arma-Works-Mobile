@@ -1,10 +1,6 @@
 package org.uk.cyberbyte.armaworks.Api;
 
 public class Server {
-    public static String SETTING_NAME = "serverName";
-    public static String SETTING_URL = "serverUrl";
-    public static String SETTING_TOKEN = "serverToken";
-
     private String name;
     private String url;
     private String token;

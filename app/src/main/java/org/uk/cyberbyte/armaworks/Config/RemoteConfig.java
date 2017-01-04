@@ -1,4 +1,4 @@
-package org.uk.cyberbyte.armaworks.Util;
+package org.uk.cyberbyte.armaworks.Config;
 
 public class RemoteConfig {
     public static final String ENABLE_SIGN_IN = "sign_in";

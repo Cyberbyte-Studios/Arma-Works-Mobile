@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
-import android.support.design.widget.Snackbar;
 import android.util.Log;
 
 import com.firebase.ui.auth.AuthUI;
@@ -16,8 +15,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings;
 
-import org.uk.cyberbyte.armaworks.Api.Server;
-import org.uk.cyberbyte.armaworks.Util.RemoteConfig;
+import org.uk.cyberbyte.armaworks.Config.RemoteConfig;
+import org.uk.cyberbyte.armaworks.Config.SharedConfig;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -80,6 +79,7 @@ public class LoginActivity extends BaseActivity {
                         .setIsSmartLockEnabled(!BuildConfig.DEBUG)
                         .build(),
                 RC_SIGN_IN);
+        finish();
     }
 
     private List<AuthUI.IdpConfig> signInProviders() {
@@ -114,7 +114,7 @@ public class LoginActivity extends BaseActivity {
 
         if (resultCode == ResultCodes.RESULT_NO_NETWORK) {
 
-         showSnackbar(R.string.error_no_internet);
+            showSnackbar(R.string.error_no_internet);
             return;
         }
         showSnackbar(R.string.error);
@@ -124,15 +124,16 @@ public class LoginActivity extends BaseActivity {
         if (hasValidServer()) {
             startActivity(new Intent(this, MainActivity.class));
         }
-        startActivity(new Intent(this, MainActivity.class));
-//        startActivity(new Intent(this, AddServerActivity.class));
+        Log.d(TAG, "Server not found redirecting to AddServer");
+        startActivity(new Intent(this, AddServerActivity.class));
+        finish();
     }
 
     private boolean hasValidServer() {
         SharedPreferences settings = getSettings();
-        return settings.contains(Server.SETTING_NAME) &&
-                settings.contains(Server.SETTING_URL) &&
-                settings.contains(Server.SETTING_TOKEN);
+        return settings.contains(SharedConfig.SERVER_NAME) &&
+                settings.contains(SharedConfig.SERVER_URL) &&
+                settings.contains(SharedConfig.SERVER_TOKEN);
     }
 
     private void showSnackbar(@StringRes int errorMessageRes) {
