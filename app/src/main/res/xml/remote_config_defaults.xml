@@ -20,4 +20,8 @@
         <key>tos_url</key>
         <value>https://cyberbyte.org.uk/</value>
     </entry>
+    <entry>
+        <key>google_auth</key>
+        <value>true</value>
+    </entry>
 </defaultsMap>
