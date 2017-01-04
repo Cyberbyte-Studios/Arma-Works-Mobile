@@ -11,6 +11,7 @@ import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.ui.ResultCodes;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings;
@@ -103,6 +104,9 @@ public class LoginActivity extends BaseActivity {
 
     private void handleSignInResponse(int resultCode, Intent data) {
         if (resultCode == RESULT_OK) {
+            Bundle bundle = new Bundle();
+            bundle.putString(FirebaseAnalytics.Param.SIGN_UP_METHOD, "Firebase Auth UI");
+            mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SIGN_UP, bundle);
             userAlreadySignedIn();
             return;
         }

@@ -19,11 +19,11 @@ import java.util.List;
  */
 public class MyPlayerRecyclerViewAdapter extends RecyclerView.Adapter<MyPlayerRecyclerViewAdapter.ViewHolder> {
 
-    private final List<Player> mValues;
+    private final List<Player> players;
     private final OnListFragmentInteractionListener mListener;
 
-    public MyPlayerRecyclerViewAdapter(List<Player> items, OnListFragmentInteractionListener listener) {
-        mValues = items;
+    public MyPlayerRecyclerViewAdapter(List<Player> players, OnListFragmentInteractionListener listener) {
+        this.players = players;
         mListener = listener;
     }
 
@@ -36,9 +36,9 @@ public class MyPlayerRecyclerViewAdapter extends RecyclerView.Adapter<MyPlayerRe
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        holder.mItem = mValues.get(position);
-//        holder.mIdView.setText(mValues.get(position).id);
-//        holder.mContentView.setText(mValues.get(position).content);
+        holder.mItem = players.get(position);
+//        holder.mIdView.setText(players.get(position).id);
+//        holder.mContentView.setText(players.get(position).content);
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,9 +52,13 @@ public class MyPlayerRecyclerViewAdapter extends RecyclerView.Adapter<MyPlayerRe
         });
     }
 
+    public void swap(List<Player> players) {
+
+    }
+
     @Override
     public int getItemCount() {
-        return mValues.size();
+        return players.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

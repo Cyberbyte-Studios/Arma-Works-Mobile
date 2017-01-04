@@ -97,6 +97,8 @@ public class MainActivity extends BaseActivity
     }
 
     private void visitSupport() {
+        mFirebaseAnalytics.logEvent("visit_support", new Bundle());
+
         CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
         CustomTabsIntent customTabsIntent = builder.build();
         customTabsIntent.launchUrl(this, Uri.parse(mFirebaseRemoteConfig.getString(RemoteConfig.SUPPORT_URL)));

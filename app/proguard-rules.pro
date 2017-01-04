@@ -17,3 +17,5 @@
 #}
 -keepattributes Signature
 -keepattributes *Annotation*
+
+-dontwarn org.w3c.dom.bootstrap.DOMImplementationRegistry

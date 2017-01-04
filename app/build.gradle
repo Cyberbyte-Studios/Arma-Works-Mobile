@@ -7,13 +7,14 @@ android {
         applicationId "org.uk.cyberbyte.armaworks"
         minSdkVersion 21
         targetSdkVersion 25
+        multiDexEnabled true
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -48,10 +49,10 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:25.1.0'
     compile 'com.loopj.android:android-async-http:1.4.9'
     compile 'com.google.code.gson:gson:2.6.2'
+    compile 'com.google.firebase:firebase-core:10.0.1'
     testCompile 'junit:junit:4.12'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
 }
-
 
 
 apply plugin: 'com.google.gms.google-services'
