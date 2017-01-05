@@ -1,5 +1,6 @@
 package org.uk.cyberbyte.armaworks;
 
+import android.app.ProgressDialog;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -23,6 +24,7 @@ public class BaseActivity extends AppCompatActivity {
     protected FirebaseAnalytics mFirebaseAnalytics;
     protected FirebaseRemoteConfig mFirebaseRemoteConfig;
     protected FirebaseAuth mFirebaseAuth;
+    private ProgressDialog mProgressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,22 @@ public class BaseActivity extends AppCompatActivity {
         setUpRemoteConfig();
         setUpAnalytics();
         setUpAuth();
+    }
+
+    public void showProgressDialog() {
+        if (mProgressDialog == null) {
+            mProgressDialog = new ProgressDialog(this);
+            mProgressDialog.setCancelable(false);
+            mProgressDialog.setMessage(getString(R.string.loading));
+        }
+
+        mProgressDialog.show();
+    }
+
+    public void hideProgressDialog() {
+        if (mProgressDialog != null && mProgressDialog.isShowing()) {
+            mProgressDialog.dismiss();
+        }
     }
 
     protected SharedPreferences getSettings() {

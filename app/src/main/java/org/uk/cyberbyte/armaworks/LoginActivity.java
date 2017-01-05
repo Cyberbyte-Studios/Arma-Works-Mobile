@@ -6,6 +6,7 @@ import android.util.Log;
 
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.ui.ResultCodes;
+import com.firebase.ui.auth.ui.email.SignInActivity;
 import com.google.firebase.analytics.FirebaseAnalytics;
 
 import org.uk.cyberbyte.armaworks.Config.RemoteConfig;
@@ -84,6 +85,7 @@ public class LoginActivity extends BaseActivity {
     }
 
     private void userSignedIn() {
-        
+        startActivity(new Intent(LoginActivity.this, ArmaLifeActivity.class));
+        finish();
     }
 }
