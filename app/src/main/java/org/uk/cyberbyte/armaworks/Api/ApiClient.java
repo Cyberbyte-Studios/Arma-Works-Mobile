@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
     private static ApiPlug REST_CLIENT;
-    private static final String API_URL = "http://192.168.1.71:8000/api/";
+    private static final String API_URL = "https://arma-works.firebaseapp.com/";
 
     static {
         setupRestClient();

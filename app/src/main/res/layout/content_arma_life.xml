@@ -14,12 +14,11 @@
     tools:showIn="@layout/app_bar_arma_life">
 
     <TextView
-        android:text="TextView"
+        android:text="This app is currently under development"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="116dp"
-        android:layout_marginTop="86dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="13dp"
         android:id="@+id/textView2" />
 </RelativeLayout>

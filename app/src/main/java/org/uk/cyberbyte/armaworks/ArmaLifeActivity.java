@@ -2,29 +2,23 @@ package org.uk.cyberbyte.armaworks;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.firebase.ui.auth.ui.email.SignInActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
-import org.uk.cyberbyte.armaworks.Api.ApiClient;
 import org.uk.cyberbyte.armaworks.Api.Models.ArmaLife.Player.Player;
-
-import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import org.uk.cyberbyte.armaworks.Fragments.PlayerFragment;
 
 public class ArmaLifeActivity extends BaseActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, PlayerFragment.OnListFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,21 +35,6 @@ public class ArmaLifeActivity extends BaseActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-        Call<List<Player>> call = ApiClient.get().getPlayers();
-        call.enqueue(new Callback<List<Player>>() {
-            @Override
-            public void onFailure(Call<List<Player>> call, Throwable t) {
-                Log.e(TAG, "Unable to get players: " + t.getMessage(), t);
-            }
-
-            @Override
-            public void onResponse(Call<List<Player>> call, Response<List<Player>> response) {
-                players = response.body();
-                Log.d(TAG, "Successfully got "+players.size()+"fetched");
-            }
-        });
-
     }
 
     @Override
@@ -99,10 +78,17 @@ public class ArmaLifeActivity extends BaseActivity
             startActivity(new Intent(this, SignInActivity.class));
             finish();
             return true;
+        } else if (id == R.id.nav_player) {
+            switchFragment(new PlayerFragment(), R.id.content_arma_life);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onListFragmentInteraction(Player player) {
+        Log.d(TAG, "Clicked on player" + player.getName());
     }
 }

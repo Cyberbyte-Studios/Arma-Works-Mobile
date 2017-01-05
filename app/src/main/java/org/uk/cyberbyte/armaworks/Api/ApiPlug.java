@@ -13,7 +13,7 @@ import retrofit2.http.Path;
 
 public interface ApiPlug {
 
-    @GET("test.html")
+    @GET("players.html")
     Call<List<Player>> getPlayers();
 
     @GET("armalife/player/{id}")
