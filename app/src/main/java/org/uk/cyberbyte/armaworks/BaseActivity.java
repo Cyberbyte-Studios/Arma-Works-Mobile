@@ -53,11 +53,17 @@ public class BaseActivity extends AppCompatActivity {
         }
     }
 
-    protected void switchFragment(Fragment newFragment, int replace) {
+    protected void switchFragment(Fragment newFragment, int replace, Bundle args) {
+        newFragment.setArguments(args);
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(replace, newFragment);
         transaction.addToBackStack(null);
         transaction.commit();
+    }
+
+    protected void switchFragment(Fragment newFragment, int replace) {
+        Bundle args = new Bundle();
+        switchFragment(newFragment, replace, args);
     }
 
     protected SharedPreferences getSettings() {

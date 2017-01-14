@@ -32,27 +32,19 @@ public class PlayerFragment extends Fragment {
 
     protected static final String TAG = "AW_PlayerFragment";
 
-    // TODO: Customize parameter argument names
-    private static final String ARG_COLUMN_COUNT = "column-count";
-    // TODO: Customize parameters
-    private int mColumnCount = 1;
+    private static final String ARG_PLAYERS = "players";
+    private ArrayList<Player> players;
     private OnListFragmentInteractionListener mListener;
     private MyPlayerRecyclerViewAdapter recyclerAdapter;
     private RecyclerView recyclerView;
 
-    /**
-     * Mandatory empty constructor for the fragment manager to instantiate the
-     * fragment (e.g. upon screen orientation changes).
-     */
-    public PlayerFragment() {
-    }
+    public PlayerFragment() {}
 
-    // TODO: Customize parameter initialization
     @SuppressWarnings("unused")
-    public static PlayerFragment newInstance(int columnCount) {
+    public static PlayerFragment newInstance(ArrayList<Player> players) {
         PlayerFragment fragment = new PlayerFragment();
         Bundle args = new Bundle();
-        args.putInt(ARG_COLUMN_COUNT, columnCount);
+        args.putParcelableArrayList(ARG_PLAYERS, players);
         fragment.setArguments(args);
         return fragment;
     }
@@ -62,7 +54,7 @@ public class PlayerFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         if (getArguments() != null) {
-            mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
+            players = getArguments().getParcelableArrayList(ARG_PLAYERS);
         }
     }
 
@@ -72,17 +64,8 @@ public class PlayerFragment extends Fragment {
         getPlayers();
 
         View view = inflater.inflate(R.layout.fragment_player_list, container, false);
-        // Set the adapter
         if (view instanceof RecyclerView) {
-            Context context = view.getContext();
             recyclerView = (RecyclerView) view;
-            if (mColumnCount <= 1) {
-                recyclerView.setLayoutManager(new LinearLayoutManager(context));
-            } else {
-                recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
-            }
-            // Todo: look into persisting this over two presses
-            List<Player> players = new ArrayList<>();
             recyclerAdapter = new MyPlayerRecyclerViewAdapter(players, mListener);
             recyclerView.setAdapter(recyclerAdapter);
         }

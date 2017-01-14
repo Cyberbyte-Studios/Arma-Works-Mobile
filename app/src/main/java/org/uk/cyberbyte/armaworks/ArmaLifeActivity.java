@@ -16,6 +16,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import org.uk.cyberbyte.armaworks.Api.Models.ArmaLife.Player.Player;
 import org.uk.cyberbyte.armaworks.Fragments.PlayerFragment;
+import org.uk.cyberbyte.armaworks.Fragments.PlayerViewFragment;
 
 public class ArmaLifeActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener, PlayerFragment.OnListFragmentInteractionListener {
@@ -89,6 +90,10 @@ public class ArmaLifeActivity extends BaseActivity
 
     @Override
     public void onListFragmentInteraction(Player player) {
-        Log.d(TAG, "Clicked on player" + player.getName());
+        Log.d(TAG, "Clicked on player " + player.getName());
+
+        Bundle args = new Bundle();
+        args.putParcelable(PlayerViewFragment.ARG_PLAYER, player);
+        switchFragment(new PlayerViewFragment(), R.id.content_arma_life, args);
     }
 }

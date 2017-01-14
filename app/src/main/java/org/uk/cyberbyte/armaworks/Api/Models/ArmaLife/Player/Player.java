@@ -1,11 +1,16 @@
 
 package org.uk.cyberbyte.armaworks.Api.Models.ArmaLife.Player;
 
+import android.os.Parcelable;
+
 import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Player {
+import auto.parcelgson.AutoParcelGson;
+
+@AutoParcelGson
+public abstract class Player implements Parcelable {
 
     @SerializedName("uid")
     @Expose

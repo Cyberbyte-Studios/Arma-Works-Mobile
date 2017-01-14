@@ -1,5 +1,9 @@
 package org.uk.cyberbyte.armaworks.Api;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import auto.parcelgson.gson.AutoParcelGsonTypeAdapterFactory;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -28,9 +32,11 @@ public class ApiClient {
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
         httpClient.addInterceptor(logging);
 
+        Gson gson = new GsonBuilder().registerTypeAdapterFactory(new AutoParcelGsonTypeAdapterFactory()).create();
+
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(API_URL)
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gson))
                 .client(httpClient.build())
                 .build();
         //http://stackoverflow.com/questions/34288873/retrofit-2-rxjava-gson-global-deserialization-change-response-type

@@ -30,3 +30,7 @@
 -keepattributes Signature
 # Retain declared checked exceptions for use by a Proxy instance.
 -keepattributes Exceptions
+
+# https://github.com/evant/auto-parcel-gson
+-keep class **.AutoParcelGson_*
+-keepnames @auto.parcelgson.AutoParcelGson class *
