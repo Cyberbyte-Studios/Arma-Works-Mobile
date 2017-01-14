@@ -7,22 +7,22 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import org.uk.cyberbyte.armaworks.Api.Models.ArmaLife.Player.Player;
-import org.uk.cyberbyte.armaworks.Fragments.PlayerFragment.OnListFragmentInteractionListener;
+import org.uk.cyberbyte.armaworks.Fragments.PlayerFragment.OnPlayerListFragmentInteractionListener;
 import org.uk.cyberbyte.armaworks.R;
 
 import java.util.List;
 
 /**
  * {@link RecyclerView.Adapter} that can display a {@link Player} and makes a call to the
- * specified {@link OnListFragmentInteractionListener}.
+ * specified {@link PlayerFragment.OnPlayerListFragmentInteractionListener}.
  * TODO: Replace the implementation with code for your data type.
  */
 public class MyPlayerRecyclerViewAdapter extends RecyclerView.Adapter<MyPlayerRecyclerViewAdapter.ViewHolder> {
 
     private final List<Player> mValues;
-    private final OnListFragmentInteractionListener mListener;
+    private final OnPlayerListFragmentInteractionListener mListener;
 
-    public MyPlayerRecyclerViewAdapter(List<Player> items, OnListFragmentInteractionListener listener) {
+    public MyPlayerRecyclerViewAdapter(List<Player> items, PlayerFragment.OnPlayerListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
@@ -44,9 +44,7 @@ public class MyPlayerRecyclerViewAdapter extends RecyclerView.Adapter<MyPlayerRe
             @Override
             public void onClick(View v) {
                 if (null != mListener) {
-                    // Notify the active callbacks interface (the activity, if the
-                    // fragment is attached to one) that an item has been selected.
-                    mListener.onListFragmentInteraction(holder.mItem);
+                    mListener.onPlayerListFragmentInteraction(holder.mItem);
                 }
             }
         });

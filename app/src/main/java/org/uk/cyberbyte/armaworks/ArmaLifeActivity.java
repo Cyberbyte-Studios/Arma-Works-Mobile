@@ -18,7 +18,7 @@ import org.uk.cyberbyte.armaworks.Fragments.PlayerFragment;
 import org.uk.cyberbyte.armaworks.Fragments.PlayerViewFragment;
 
 public class ArmaLifeActivity extends BaseActivity
-        implements NavigationView.OnNavigationItemSelectedListener, PlayerFragment.OnListFragmentInteractionListener {
+        implements NavigationView.OnNavigationItemSelectedListener, PlayerFragment.OnPlayerListFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,7 +88,7 @@ public class ArmaLifeActivity extends BaseActivity
     }
 
     @Override
-    public void onListFragmentInteraction(Player player) {
+    public void onPlayerListFragmentInteraction(Player player) {
         Log.d(TAG, "Clicked on player " + player.getName());
 
         Bundle args = new Bundle();
