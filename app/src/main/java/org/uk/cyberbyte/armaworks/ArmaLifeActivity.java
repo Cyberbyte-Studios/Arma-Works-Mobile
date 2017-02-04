@@ -11,7 +11,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.firebase.ui.auth.ui.email.SignInActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
 import org.uk.cyberbyte.armaworks.Api.Models.ArmaLife.Player.Player;
@@ -76,7 +75,7 @@ public class ArmaLifeActivity extends BaseActivity
 
         if (id == R.id.nav_logout) {
             FirebaseAuth.getInstance().signOut();
-            startActivity(new Intent(this, SignInActivity.class));
+            startActivity(new Intent(this, LoginActivity.class));
             finish();
             return true;
         } else if (id == R.id.nav_player) {

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ArmaWorks.iml" filepath="$PROJECT_DIR$/ArmaWorks.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Arma-Works-Mobile.iml" filepath="$PROJECT_DIR$/Arma-Works-Mobile.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

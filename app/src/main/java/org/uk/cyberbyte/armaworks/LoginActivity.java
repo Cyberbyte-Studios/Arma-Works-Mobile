@@ -5,8 +5,9 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.firebase.ui.auth.AuthUI;
-import com.firebase.ui.auth.ui.ResultCodes;
-import com.firebase.ui.auth.ui.email.SignInActivity;
+import com.firebase.ui.auth.ErrorCodes;
+import com.firebase.ui.auth.IdpResponse;
+import com.firebase.ui.auth.ResultCodes;
 import com.google.firebase.analytics.FirebaseAnalytics;
 
 import org.uk.cyberbyte.armaworks.Config.RemoteConfig;
@@ -22,7 +23,6 @@ public class LoginActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
 
         if (mFirebaseAuth.getCurrentUser() != null) {
             userSignedIn();
@@ -59,23 +59,38 @@ public class LoginActivity extends BaseActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == RC_SIGN_IN) {
-            handleSignInResponse(resultCode);
+            IdpResponse response = IdpResponse.fromResultIntent(data);
+            handleSignInResponse(resultCode, response);
         }
     }
 
-    private void handleSignInResponse(int resultCode) {
-        if (resultCode == RESULT_OK) {
+    private void handleSignInResponse(int resultCode, IdpResponse response) {
+        // Successfully signed in
+        if (resultCode == ResultCodes.OK) {
             logSignIn();
             UserService.saveAuthUser();
             userSignedIn();
+            finish();
             return;
-        }
+        } else {
+            // Sign in failed
+            if (response == null) {
+                // User pressed back button
+                showSnackbar(R.string.sign_in_cancelled);
+                return;
+            }
 
-        if (resultCode == RESULT_CANCELED) {
-            Log.e(TAG, getString(R.string.error_sign_in_cancelled));
-        } else if (resultCode == ResultCodes.RESULT_NO_NETWORK) {
-            Log.e(TAG, getString(R.string.error_no_internet));
+            if (response.getErrorCode() == ErrorCodes.NO_NETWORK) {
+                showSnackbar(R.string.no_internet_connection);
+                return;
+            }
+
+            if (response.getErrorCode() == ErrorCodes.UNKNOWN_ERROR) {
+                showSnackbar(R.string.unknown_error);
+                return;
+            }
         }
+        showSnackbar(R.string.unknown_sign_in_response);
     }
 
     private void logSignIn() {
