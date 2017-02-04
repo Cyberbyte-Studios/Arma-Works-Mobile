@@ -9,6 +9,7 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+    <string name="action_refresh">Refresh Now</string>
     <string name="title_activity_login">Sign in</string>
 
     <string name="menu_get_support">Get Support</string>
@@ -22,6 +23,13 @@
     <string name="error_sign_in_cancelled">The Sign in was cancelled</string>
 
     <string name="title_activity_arma_life">Arma Life</string>
+
+    <string name="player_uid">UID</string>
+    <string name="player_cash">Cash</string>
+    <string name="player_bank">Bank Account</string>
+    <string name="player_side_medic">Medic</string>
+    <string name="player_side_cop">Cop</string>
+    <string name="player_side_civ">Civilian</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

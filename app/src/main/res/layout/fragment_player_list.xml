@@ -9,5 +9,5 @@
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
     app:layoutManager="LinearLayoutManager"
-    tools:context="org.uk.cyberbyte.armaworks.Fragments.PlayerFragment"
+    tools:context="org.uk.cyberbyte.armaworks.Fragments.PlayerListFragment"
     tools:listitem="@layout/fragment_player" />

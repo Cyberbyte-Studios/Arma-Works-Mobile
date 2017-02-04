@@ -7,14 +7,14 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import org.uk.cyberbyte.armaworks.Api.Models.ArmaLife.Player.Player;
-import org.uk.cyberbyte.armaworks.Fragments.PlayerFragment.OnPlayerListFragmentInteractionListener;
+import org.uk.cyberbyte.armaworks.Fragments.PlayerListFragment.OnPlayerListFragmentInteractionListener;
 import org.uk.cyberbyte.armaworks.R;
 
 import java.util.List;
 
 /**
  * {@link RecyclerView.Adapter} that can display a {@link Player} and makes a call to the
- * specified {@link PlayerFragment.OnPlayerListFragmentInteractionListener}.
+ * specified {@link PlayerListFragment.OnPlayerListFragmentInteractionListener}.
  * TODO: Replace the implementation with code for your data type.
  */
 public class MyPlayerRecyclerViewAdapter extends RecyclerView.Adapter<MyPlayerRecyclerViewAdapter.ViewHolder> {
@@ -22,7 +22,7 @@ public class MyPlayerRecyclerViewAdapter extends RecyclerView.Adapter<MyPlayerRe
     private final List<Player> mValues;
     private final OnPlayerListFragmentInteractionListener mListener;
 
-    public MyPlayerRecyclerViewAdapter(List<Player> items, PlayerFragment.OnPlayerListFragmentInteractionListener listener) {
+    public MyPlayerRecyclerViewAdapter(List<Player> items, PlayerListFragment.OnPlayerListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }

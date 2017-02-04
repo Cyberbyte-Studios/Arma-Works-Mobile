@@ -34,3 +34,7 @@
 # https://github.com/evant/auto-parcel-gson
 -keep class **.AutoParcelGson_*
 -keepnames @auto.parcelgson.AutoParcelGson class *
+
+# https://github.com/ragunathjawahar/android-saripaar
+-keep class com.mobsandgeeks.saripaar.** {*;}
+-keep @com.mobsandgeeks.saripaar.annotation.ValidateUsing class * {*;}

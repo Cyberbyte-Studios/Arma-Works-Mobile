@@ -1,4 +1,4 @@
-package org.uk.cyberbyte.armaworks;
+package org.uk.cyberbyte.armaworks.Activities;
 
 import android.app.ProgressDialog;
 import android.content.SharedPreferences;
@@ -17,7 +17,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings;
 
+import org.uk.cyberbyte.armaworks.BuildConfig;
 import org.uk.cyberbyte.armaworks.Config.SharedConfig;
+import org.uk.cyberbyte.armaworks.R;
 
 public class BaseActivity extends AppCompatActivity {
 

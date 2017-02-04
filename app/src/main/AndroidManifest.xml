@@ -20,13 +20,18 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ArmaLifeActivity"
+            android:name=".Activities.ArmaLife.ArmaLifeActivity"
             android:label="@string/title_activity_arma_life"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:name=".Activities.ArmaLife.PlayerActivity"
+            android:label="@string/title_activity_arma_life"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+        <activity
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings"
-            android:parentActivityName=".ArmaLifeActivity" />
+            android:parentActivityName=".Activities.ArmaLife.ArmaLifeActivity" />
     </application>
 
 </manifest>

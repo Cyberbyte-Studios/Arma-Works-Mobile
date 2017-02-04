@@ -10,6 +10,8 @@ import com.firebase.ui.auth.IdpResponse;
 import com.firebase.ui.auth.ResultCodes;
 import com.google.firebase.analytics.FirebaseAnalytics;
 
+import org.uk.cyberbyte.armaworks.Activities.ArmaLife.ArmaLifeActivity;
+import org.uk.cyberbyte.armaworks.Activities.BaseActivity;
 import org.uk.cyberbyte.armaworks.Config.RemoteConfig;
 import org.uk.cyberbyte.armaworks.Services.UserService;
 

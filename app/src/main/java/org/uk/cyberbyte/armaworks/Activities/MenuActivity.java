@@ -1,4 +1,4 @@
-package org.uk.cyberbyte.armaworks;
+package org.uk.cyberbyte.armaworks.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,23 +7,22 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-import org.uk.cyberbyte.armaworks.Api.Models.ArmaLife.Player.Player;
-import org.uk.cyberbyte.armaworks.Fragments.PlayerFragment;
-import org.uk.cyberbyte.armaworks.Fragments.PlayerViewFragment;
+import org.uk.cyberbyte.armaworks.Fragments.PlayerListFragment;
+import org.uk.cyberbyte.armaworks.R;
+import org.uk.cyberbyte.armaworks.SettingsActivity;
 
-public class ArmaLifeActivity extends BaseActivity
-        implements NavigationView.OnNavigationItemSelectedListener, PlayerFragment.OnPlayerListFragmentInteractionListener {
+public abstract class MenuActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+    protected int activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_arma_life);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -80,20 +79,11 @@ public class ArmaLifeActivity extends BaseActivity
             finish();
             return true;
         } else if (id == R.id.nav_player) {
-            switchFragment(new PlayerFragment(), R.id.content_arma_life);
+            switchFragment(new PlayerListFragment(), R.id.content_arma_life);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
-    }
-
-    @Override
-    public void onPlayerListFragmentInteraction(Player player) {
-        Log.d(TAG, "Clicked on player " + player.getName());
-
-        Bundle args = new Bundle();
-        args.putParcelable(PlayerViewFragment.ARG_PLAYER, player);
-        switchFragment(new PlayerViewFragment(), R.id.content_arma_life, args);
     }
 }
